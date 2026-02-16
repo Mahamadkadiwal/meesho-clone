@@ -3,6 +3,18 @@
 :root {
   --background: #fdeefa;
   --foreground: #171717;
+
+  --sidebar-bg: #26282a;
+  --sidebar-active: #5a5d66;
+  --sidebar-text: #ffffff;
+
+  --sidebar-link-text: #d1d5dc;
+  --sidebar-link-hover-bg: #1e2939;
+
+  /*  seller dashboard  */
+  --bg-color: #f3f5f9;
+  --div-bg: #ffffff;
+  --text-color: #5a5d66;
 }
 
 @theme inline {
