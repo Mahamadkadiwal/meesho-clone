@@ -3,6 +3,22 @@
 :root {
   --background: #fdeefa;
   --foreground: #171717;
+
+  --text-color: rgb(53, 53, 67);
+  --text-color-white: #ffffff;
+
+  --header-bg: #ffffff;
+  --header-text: #353543;
+  --header-in-border-color: #8b8ba3;
+  --header-in-text-color: rgb(53, 53, 67);
+  --header-line: rgb(206, 206, 222);
+
+  --form-border-color: rgb(234, 234, 242);
+
+  --hover-text: rgb(159, 32, 137);
+  --btn-bg: rgb(159, 32, 137);
+
+  --input-label-color: rgb(139, 139, 163);
 }
 
 @theme inline {
@@ -23,4 +39,29 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .primary-btn {
+    width: 100%;
+    cursor: pointer;
+    font-style: normal;
+    text-align: center;
+    letter-spacing: 0.0015em;
+    font-size: 15px;
+    line-height: 20px;
+    border-radius: 4px;
+    color: rgb(255, 255, 255);
+    background: var(--btn-bg);
+    border: none;
+    padding: 12px;
+  }
+
+  .primary-btn span {
+    color: rgb(255, 255, 255);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+  }
 }
