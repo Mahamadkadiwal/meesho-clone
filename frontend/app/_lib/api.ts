@@ -5,7 +5,7 @@ export async function api(url: string, options?: RequestInit) {
       "Content-Type": "application/json",
       ...options?.headers,
     },
-    cache: "no-store",
+    // cache: "no-store",
   });
 
   if (!res.ok) {

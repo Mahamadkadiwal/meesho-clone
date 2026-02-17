@@ -29,8 +29,8 @@ export class AuthService {
     const hashRef = await this.hashService.hashPassword(refresh_token);
     await this.userService.findByIdToken(user._id, hashRef);
     return {
-      access_token: access_token,
-      refresh_token: hashRef,
+      access_token,
+      refresh_token,
       userId: user._id,
       email: user.email,
       username: user.username,
@@ -62,8 +62,8 @@ export class AuthService {
     await this.userService.findByIdToken(user._id, hash);
 
     return {
-      access_token: access_token,
-      refresh_token: hash,
+      access_token,
+      refresh_token,
       userId: user._id,
       username: user.username,
       email: user.email,
@@ -72,7 +72,41 @@ export class AuthService {
   }
 
   async logoutUser(user_id: string) {
-    console.log(user_id);
     return await this.userService.logout(user_id);
+  }
+
+  async refreshToken(refreshToken: string) {
+    try {
+      const payload: { sub: string; role: string } =
+        await this.tokenService.verifyRefreshToken(refreshToken);
+
+      const user = await this.userService.findUserbyId(payload.sub);
+      if (!user || !user.refreshToken) {
+        throw new UnauthorizedException('Access Denied');
+      }
+
+      const isMatch = await this.hashService.comparePassword(
+        refreshToken,
+        user.refreshToken,
+      );
+
+      if (!isMatch) {
+        throw new UnauthorizedException('Invalid refresh token');
+      }
+
+      const newAccessToken = await this.tokenService.accessToken({
+        sub: user._id,
+        role: (user.roleId as Role).name,
+      });
+
+      return {
+        access_token: newAccessToken,
+      };
+    } catch (err) {
+      throw new UnauthorizedException(
+        'Invalid or expired refresh token',
+        err.message,
+      );
+    }
   }
 }

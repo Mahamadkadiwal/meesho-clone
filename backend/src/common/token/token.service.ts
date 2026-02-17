@@ -17,4 +17,10 @@ export class TokenService {
       expiresIn: '7d',
     });
   }
+
+  async verifyRefreshToken(token: string): Promise<any> {
+    return await this.jwtService.verifyAsync(token, {
+      secret: process.env.REFRESH_SECRET,
+    });
+  }
 }

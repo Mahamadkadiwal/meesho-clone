@@ -55,7 +55,7 @@ export class UserService {
   }
 
   async findUserbyId(id: string) {
-    return this.userModel.findById(id);
+    return this.userModel.findById(id).populate('roleId').lean();
   }
 
   async logout(id: string) {
