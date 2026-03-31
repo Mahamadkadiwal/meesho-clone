@@ -19,6 +19,28 @@
   --btn-bg: rgb(159, 32, 137);
 
   --input-label-color: rgb(139, 139, 163);
+
+  --sidebar-bg: #26282a;
+  --sidebar-active: #5a5d66;
+  --sidebar-text: #ffffff;
+
+  --sidebar-link-text: #d1d5dc;
+  --sidebar-link-hover-bg: #1e2939;
+
+  /*  seller dashboard  */
+  --bg-color: #f3f5f9;
+  --div-bg: #ffffff;
+  --text-color: #5a5d66;
+
+  --header-btn-bg: #26282a;
+  --header-btn-bg-hover: #5a5d66;
+
+  /* modal  */
+  --modal-title-bg: #26282a;
+  --modal-btn-bg: #26282a;
+  --modal-btn-bg-hover: #5a5d66;
+
+  --border-color: #8b8ba3;
 }
 
 @theme inline {
@@ -43,7 +65,6 @@ body {
 
 @layer utilities {
   .primary-btn {
-    width: 100%;
     cursor: pointer;
     font-style: normal;
     text-align: center;
@@ -63,5 +84,52 @@ body {
     font-weight: 600;
     font-size: 18px;
     line-height: 24px;
+  }
+
+  .catalog-btn {
+    cursor: pointer;
+    font-style: normal;
+    text-align: center;
+    letter-spacing: 0.0015em;
+    font-size: 15px;
+    line-height: 18px;
+    border-radius: 4px;
+    color: rgb(255, 255, 255);
+    background: #4338ca;
+    border: none;
+    padding: 10px;
+  }
+
+  .catalog-normal-btn {
+    cursor: pointer;
+    font-style: normal;
+    text-align: center;
+    letter-spacing: 0.0015em;
+    font-size: 15px;
+    line-height: 18px;
+    border-radius: 4px;
+    color: #4338ca;
+    background: #ffffff;
+    border: 1px solid blue;
+    padding: 10px;
+  }
+
+  .ribbon-active {
+    position: relative;
+    background: linear-gradient(90deg, #4f46e5, #4338ca);
+    color: white;
+    display: flex;
+    align-items: center;
+  }
+
+  .ribbon-active::after {
+    content: "";
+    position: absolute;
+    right: -14px;
+    top: 0;
+    height: 100%;
+    width: 14px;
+    background: #4338ca;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
   }
 }
